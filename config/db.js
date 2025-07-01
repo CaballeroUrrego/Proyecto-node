@@ -16,7 +16,7 @@ const config = {
 const poolPromise = new sql.ConnectionPool(config)
   .connect()
   .then(pool => {
-    console.log('✅ Conectado a servidor_Privado Caballero Urrego');
+    console.log('🔥🎶👾👁️ Conectado a servidor_Privado Caballero Urrego');
     return pool;
   })
   .catch(err => {
