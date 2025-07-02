@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+</head>
+<body>
+  <h1>Iniciar Sesión</h1>
+  <form id="loginForm">
+    <label>Usuario: <input type="text" name="username" required></label><br>
+    <label>Contraseña: <input type="password" name="password" required></label><br>
+    <button type="submit">Ingresar</button>
+  </form>
+  <div id="loginMensaje"></div>
+  <a href="registro.html">¿No tienes cuenta? Regístrate</a>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const username = this.username.value;
+      const password = this.password.value;
+
+      const res = await fetch('/api/usuarios');
+      const usuarios = await res.json();
+      const usuario = usuarios.find(u => u.username === username && u.password === password);
+
+      const loginMensaje = document.getElementById('loginMensaje');
+      if (usuario) {
+        loginMensaje.textContent = "¡Bienvenido, " + username + "!";
+        loginMensaje.style.color = "green";
+        // Guardar usuario en localStorage para acceso a inventario
+        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+        setTimeout(() => {
+          window.location.href = "inventario.html";
+        }, 1000);
+      } else {
+        loginMensaje.textContent = "Usuario o contraseña incorrectos";
+        loginMensaje.style.color = "red";
+        localStorage.removeItem('usuarioLogueado');
+      }
+    });
+  </script>
+</body>
+</html>

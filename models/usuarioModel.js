@@ -19,9 +19,8 @@ async function crearUsuario(username, password) {
 async function obtenerUsuarios() {
   try {
     const pool = await poolPromise;
-    const result = await pool
-      .request()
-      .query("SELECT id, username FROM Usuarios");
+    const result = await pool.request()
+      .query("SELECT id, username, password FROM Usuarios"); // <-- incluye password
     return result.recordset;
   } catch (error) {
     throw error;
