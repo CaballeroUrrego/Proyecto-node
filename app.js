@@ -3,8 +3,12 @@ const fs = require("fs");
 const path = require("path");
 const { route: productoRoute } = require("./routes/productoRoutes");
 const { usuarioRoute } = require("./routes/usuarioRoutes");
+const express = require("express");
 
 const PORT = 3000;
+const app = express();
+
+app.use(express.static("public"));
 
 const server = http.createServer((req, res) => {
   // Servir archivos estáticos de /public si la URL termina en .html

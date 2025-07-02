@@ -1,9 +1,14 @@
-const { listarProductos, crearProducto, actualizarProducto, eliminarProducto } = require("../controllers/productoController");
+const {
+  listarProductos,
+  crearProducto,
+  actualizarProducto,
+  eliminarProducto
+} = require("../controllers/productoController");
 
 function route(req, res) {
   // Ignorar query params y barra final para el match de rutas
-  let url = req.url.split('?')[0];
-  if (url.endsWith('/')) url = url.slice(0, -1);
+  let url = req.url.split("?")[0];
+  if (url.endsWith("/")) url = url.slice(0, -1);
 
   if (req.method === "GET" && url === "/api/productos") {
     listarProductos(res);
