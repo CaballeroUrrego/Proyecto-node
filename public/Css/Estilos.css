@@ -1,8 +1,8 @@
 body {
-  background-color: #c8da05 !important;
-  color: #c11414 !important;
+  background-color: #07f49e !important; /* Fondo verde claro */
+  color: #c11414 !important; /* Texto rojo */
   min-height: 100vh;
-  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
   letter-spacing: 0.01em;
 }
 
@@ -17,7 +17,7 @@ body {
 .form-select,
 .form-check-input {
   background-color: #232324 !important;
-  color: #fff !important;
+  color: #333 !important;
   border: 1.5px solid #333 !important;
   border-radius: 12px !important;
   font-size: 1.1rem;
@@ -27,9 +27,9 @@ body {
 
 .form-control:focus {
   background-color: #232324 !important;
-  color: #fff !important;
+  color: #333 !important;
   border-color: #4f46e5 !important;
-  box-shadow: 0 0 0 2px #4f46e555;
+  box-shadow: 0 0 0 2px #4f46e5;
 }
 
 .form-label {
@@ -52,16 +52,36 @@ body {
   box-shadow: 0 2px 8px #0002;
 }
 
-.btn-primary { background-color: #4f46e5; }
-.btn-success { background-color: #22c55e; }
-.btn-danger { background-color: #ef4444; }
-.btn-secondary { background-color: #444; color: #fff; }
+.btn-primary {
+  background-color: #07f49e;
+} /* Verde claro */
+.btn-success {
+  background-color: #22c55e;
+} /* Verde */
+.btn-danger {
+  background-color: #ef4444;
+} /* Rojo */
+.btn-secondary {
+  background-color: #444;
+  color: #fff;
+} /* Gris oscuro */
 
-.btn-primary:hover { background-color: #3730a3; }
-.btn-success:hover { background-color: #15803d; }
-.btn-danger:hover { background-color: #b91c1c; }
-.btn-secondary:hover { background-color: #222; color: #fff; }
+/* Efectos hover para los botones */
+.btn-primary:hover {
+  background-color: #3730a3;
+}
+.btn-success:hover {
+  background-color: #15803d;
+}
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+.btn-secondary:hover {
+  background-color: #222;
+  color: #fff;
+}
 
+/* Enlaces azules con efecto hover */
 a {
   color: #60a5fa !important;
   text-decoration: none;
@@ -73,6 +93,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Estilo para los ítems de lista en modo oscuro */
 .list-group-item.bg-dark {
   background-color: #232324 !important;
   color: #fff !important;
@@ -82,6 +103,7 @@ a:hover {
   font-size: 1.1rem;
 }
 
+/* Personalización de la barra de scroll */
 ::-webkit-scrollbar {
   width: 8px;
   background: #232324;
@@ -91,21 +113,27 @@ a:hover {
   border-radius: 8px;
 }
 
+/* Botones de los inputs numéricos invertidos para mejor visibilidad */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   filter: invert(1);
 }
 
-#mensaje, #loginMensaje, #productoMensaje {
+/* Mensajes de login, producto, etc. con fuente más grande y margen */
+#mensaje,
+#loginMensaje,
+#productoMensaje {
   font-size: 1rem;
   font-weight: 500;
   margin-top: 0.5rem;
 }
 
+/* Espaciado entre elementos flexibles */
 .d-flex {
   gap: 1rem;
 }
 
+/* Estilos responsivos para móviles */
 @media (max-width: 600px) {
   body {
     padding: 0 !important;
@@ -145,4 +173,37 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: stretch !important;
     gap: 0.5rem;
   }
+}
+
+/* Botón de login personalizado con degradado verde y efecto hover */
+.btn-login-custom {
+  background: linear-gradient(90deg, #22c55e 60%, #22c55e 100%);
+  color: #fff !important;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-login-custom:hover {
+  background: #22c55e;
+  color: #fff !important;
+}
+
+/* Estilo para el título de login */
+.titulo-login {
+  color: #22c55e; /* Verde */
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #0002;
+}
+
+/* Estilo para el ícono dentro del título */
+.titulo-login i {
+  color: #4f46e5; /* Azul violeta */
+  margin-right: 8px;
+  font-size: 2rem;
+  vertical-align: middle;
 }
