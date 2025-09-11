@@ -4,22 +4,31 @@ const path = require("path");
 const { route: productoRoute } = require("./routes/productoRoutes");
 const { usuarioRoute } = require("./routes/usuarioRoutes");
 const express = require("express");
-
-const PORT = 3000;
 const app = express();
 
-app.use(express.static("public"));
+const PORT = 3000;
+
+app.use(express.static("public")); // <-- Esta línea es clave
 
 const server = http.createServer((req, res) => {
-  // Servir archivos estáticos de /public si la URL termina en .html
-  if (req.url.endsWith(".html")) {
-    const filePath = path.join(__dirname, "public", req.url);
-    fs.readFile(filePath, (err, data) => {
+  // Servir archivos estáticos de /public (CSS, JS, imágenes, etc.)
+  const staticFilePath = path.join(__dirname, "public", req.url);
+  if (fs.existsSync(staticFilePath) && fs.statSync(staticFilePath).isFile()) {
+    const ext = path.extname(staticFilePath).toLowerCase();
+    let contentType = "text/plain";
+    if (ext === ".css") contentType = "text/css";
+    else if (ext === ".js") contentType = "application/javascript";
+    else if (ext === ".png") contentType = "image/png";
+    else if (ext === ".jpg" || ext === ".jpeg") contentType = "image/jpeg";
+    else if (ext === ".ico") contentType = "image/x-icon";
+    else if (ext === ".html") contentType = "text/html";
+
+    fs.readFile(staticFilePath, (err, data) => {
       if (err) {
-        res.writeHead(404, { "Content-Type": "text/plain" });
-        res.end("Archivo no encontrado");
+        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.end("Error interno");
       } else {
-        res.writeHead(200, { "Content-Type": "text/html" });
+        res.writeHead(200, { "Content-Type": contentType });
         res.end(data);
       }
     });
